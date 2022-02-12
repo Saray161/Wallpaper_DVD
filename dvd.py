@@ -4,7 +4,7 @@ import ctypes
 
 pygame.init()
 
-speed = [150, 150]
+speed = [10, 10]
 size = width, height = ctypes.windll.user32.GetSystemMetrics(0), ctypes.windll.user32.GetSystemMetrics(1)
 
 logos = ["logo/DVD_logo_1.png", "logo/DVD_logo_2.png", "logo/DVD_logo_3.png",
@@ -55,24 +55,10 @@ while True:
         count += 1
 
     count_view = pygame.font.SysFont("", 48).render("Счётчик ударов: {}".format(count), True, (255, 255, 255))
-    rect_left_view = pygame.font.SysFont("", 48).render("Счётчик слева: {}".format(rect.left), True, (255, 255, 255))
-    rect_right_view = pygame.font.SysFont("", 48).render("Счётчик справа: {}".format(rect.right), True, (255, 255, 255))
-    rect_top_view = pygame.font.SysFont("", 48).render("Счётчик сверху: {}".format(rect.top), True, (255, 255, 255))
-    rect_top_bottom = pygame.font.SysFont("", 48).render("Счётчик снизу: {}".format(rect.bottom), True, (255, 255, 255))
-    rect_speed = pygame.font.SysFont("", 48).render("Скорость: {}".format(speed), True, (255, 255, 255))
-    rect_count_corner = pygame.font.SysFont("", 48).render("Скорость: {}".format(count_corner), True, (255, 255, 255))
-    rect_i = pygame.font.SysFont("", 48).render("I: {}".format(i), True, (255, 255, 255))
     rect.left += speed[0]
     rect.top += speed[1]
     screen.fill((0, 0, 0))
     screen.blit(logo, rect)
     screen.blit(count_view, (0, 0))
-    screen.blit(rect_left_view, (0, 50))
-    screen.blit(rect_right_view, (350, 50))
-    screen.blit(rect_top_view, (0, 100))
-    screen.blit(rect_top_bottom, (350, 100))
-    screen.blit(rect_speed, (550, 0))
-    screen.blit(rect_count_corner, (900, 0))
-    screen.blit(rect_i, (900, 100))
     pygame.display.update()
     clock.tick(fps)
